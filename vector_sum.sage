@@ -52,7 +52,7 @@ class vector_sum(object):
         fullplot = []
         for i in range(0,len(self.vectorfield_list)):
              fullplot.append(self.static_visualization(i))
-	a = animate(fullplot)
+	a = animate(fullplot, figsize = 8)
         f = self.plotname
         a.save(filename=f, use_ffmpeg=False)
 
@@ -61,9 +61,9 @@ class vector_sum_exp_taylor(vector_sum):
     def __init__(self):
     	"""vector field of complex exponential"""
 	super(vector_sum_exp_taylor, self).__init__()
-	taylorpoly = [((self.x+i*self.y)**n)/factorial(n) for n in range(0,8)]
+	taylorpoly = [((self.x+i*self.y)**n)/factorial(n) for n in range(0,20)]
 	self.vectorfield_list = [(z.real(), z.imag()) for z in taylorpoly] 
-	self.plotname="exponential.gif"
+	self.plotname="taylor_exponential.gif"
 
 def visualize_generic():
     """visualizes the complex exp function taylor series"""
